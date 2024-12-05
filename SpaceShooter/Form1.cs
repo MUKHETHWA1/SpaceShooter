@@ -34,6 +34,12 @@ namespace SpaceShooter
 
         Random rnd;
 
+        int score;
+        int level;
+        int dificulty;
+        bool pause;
+        bool gameIsOver;
+
         public Form1()
         {
             InitializeComponent();
@@ -41,6 +47,13 @@ namespace SpaceShooter
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            pause = false;
+            gameIsOver = false;
+            score = 0;
+            level = 1;
+            dificulty = 9;
+
+
             backgroundspeed = 4;
             playerSpeed = 4;
             enemyspeed = 4;
@@ -206,11 +219,15 @@ namespace SpaceShooter
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Right)
+            if (!pause)
+            {
+
+            
+            if (e.KeyCode == Keys.Right)
             {
                 rightmovetimer.Start();
             }
-            if(e.KeyCode == Keys.Left)
+            if (e.KeyCode == Keys.Left)
             {
                 leftmovetimer.Start();
             }
@@ -218,9 +235,11 @@ namespace SpaceShooter
             {
                 downmovetimer.Start();
             }
-            if(e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.Up)
             {
                 upmovetimer.Start();
+            }
+
             }
         }
 
@@ -230,6 +249,29 @@ namespace SpaceShooter
             leftmovetimer.Stop();
             downmovetimer.Stop();
             upmovetimer.Stop();
+
+            if(e.KeyCode == Keys.Space)
+            {
+                if (!gameIsOver)
+                {
+                    if (pause)
+                    {
+                        StartTimers();
+                        label1.Visible = false;
+                        gameMedia.controls.play();
+                        pause = false;
+                    }
+                    else
+                    {
+                        label1.Location = new Point(this.Width / 2 - 120, 150);
+                        label1.Text = "PAUSED";
+                        label1.Visible = true;
+                        gameMedia.controls.pause();
+                        stopTimer();
+                        pause = true;
+                    }
+                }
+            }
         }
 
         private void movemunitiontimer_Tick(object sender, EventArgs e)
@@ -278,6 +320,27 @@ namespace SpaceShooter
                     || munitions[1].Bounds.IntersectsWith(enemies[i].Bounds) || munitions[2].Bounds.IntersectsWith(enemies[i].Bounds))
                 {
                     explosion.controls.play();
+
+                    score += 1;
+                    scorelb1.Text = (score<10)?"0"+score.ToString(): score.ToString();
+
+                    if(score % 30 == 0)
+                    {
+                        level += 1;
+                        levellb1.Text = (level<10)?"0"+level.ToString(): level.ToString();
+
+                        if(enemyspeed<= 10&& enemiesMunitionSpeed<=10 && dificulty >= 0)
+                        {
+                            dificulty--;
+                            enemyspeed++;
+                            enemiesMunitionSpeed++;
+                        }
+
+                        if (level == 10)
+                        {
+                            Gameover("NICE DONE");
+                        }
+                    }
                     enemies[i].Location = new Point((i + 1) * 50, -100);
                 }
 
@@ -286,13 +349,19 @@ namespace SpaceShooter
                     explosion.settings.volume = 30;
                     explosion.controls.play();
                     Player.Visible = false;
-                    Gameover("");
+                    Gameover("game over");
                 }
             }
         }
 
         private void Gameover(String str)
         {
+            label1.Text = str;
+            label1.Location = new Point(120, 120);
+            label1.Visible = true;
+            replayBtn.Visible = true;
+            exitBtn.Visible = true;
+
             gameMedia.controls.stop();
             stopTimer();
         }
@@ -317,7 +386,7 @@ namespace SpaceShooter
 
         private void EnemiesMunitionTimer_Tick(object sender, EventArgs e)
         {
-            for (int i = 0;i<enemiesMunition.Length;i++)
+            for (int i = 0;i<(enemiesMunition.Length- dificulty);i++)
             {
                 if (enemiesMunition[i].Top< this.Height)
                 {
@@ -348,6 +417,24 @@ namespace SpaceShooter
                     Gameover("Game Over");
                 }
             }
+        }
+
+        private void replayBtn_Click(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            InitializeComponent();
+            Form1_Load(e,e);
+
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
+        }
+
+        private void scorelb1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -39,6 +39,13 @@
             this.movemunitiontimer = new System.Windows.Forms.Timer(this.components);
             this.moveenemiestimer = new System.Windows.Forms.Timer(this.components);
             this.EnemiesMunitionTimer = new System.Windows.Forms.Timer(this.components);
+            this.exitBtn = new System.Windows.Forms.Button();
+            this.replayBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.levellb1 = new System.Windows.Forms.Label();
+            this.scorelb1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,12 +102,86 @@
             this.EnemiesMunitionTimer.Interval = 20;
             this.EnemiesMunitionTimer.Tick += new System.EventHandler(this.EnemiesMunitionTimer_Tick);
             // 
+            // exitBtn
+            // 
+            this.exitBtn.Location = new System.Drawing.Point(167, 240);
+            this.exitBtn.Name = "exitBtn";
+            this.exitBtn.Size = new System.Drawing.Size(240, 69);
+            this.exitBtn.TabIndex = 1;
+            this.exitBtn.Text = "Exit";
+            this.exitBtn.UseVisualStyleBackColor = true;
+            this.exitBtn.Visible = false;
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            // 
+            // replayBtn
+            // 
+            this.replayBtn.Location = new System.Drawing.Point(167, 156);
+            this.replayBtn.Name = "replayBtn";
+            this.replayBtn.Size = new System.Drawing.Size(240, 69);
+            this.replayBtn.TabIndex = 2;
+            this.replayBtn.Text = "Replay";
+            this.replayBtn.UseVisualStyleBackColor = true;
+            this.replayBtn.Visible = false;
+            this.replayBtn.Click += new System.EventHandler(this.replayBtn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(269, 112);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
+            this.label1.Visible = false;
+            // 
+            // levellb1
+            // 
+            this.levellb1.AutoSize = true;
+            this.levellb1.Location = new System.Drawing.Point(473, 45);
+            this.levellb1.Name = "levellb1";
+            this.levellb1.Size = new System.Drawing.Size(0, 13);
+            this.levellb1.TabIndex = 4;
+            // 
+            // scorelb1
+            // 
+            this.scorelb1.AutoSize = true;
+            this.scorelb1.Location = new System.Drawing.Point(82, 45);
+            this.scorelb1.Name = "scorelb1";
+            this.scorelb1.Size = new System.Drawing.Size(0, 13);
+            this.scorelb1.TabIndex = 5;
+            this.scorelb1.Click += new System.EventHandler(this.scorelb1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(43, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Score:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(440, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "level: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkBlue;
             this.ClientSize = new System.Drawing.Size(584, 461);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.scorelb1);
+            this.Controls.Add(this.levellb1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.replayBtn);
+            this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.Player);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(600, 500);
@@ -111,6 +192,7 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -125,6 +207,13 @@
         private System.Windows.Forms.Timer movemunitiontimer;
         private System.Windows.Forms.Timer moveenemiestimer;
         private System.Windows.Forms.Timer EnemiesMunitionTimer;
+        private System.Windows.Forms.Button exitBtn;
+        private System.Windows.Forms.Button replayBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label levellb1;
+        private System.Windows.Forms.Label scorelb1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
