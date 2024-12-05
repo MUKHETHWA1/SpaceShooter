@@ -24,6 +24,10 @@ namespace SpaceShooter
 
         PictureBox[] munitions;
         int MunitionSpeed;
+
+        PictureBox[] enemies;
+        int enemyspeed;
+
         Random rnd;
 
         public Form1()
@@ -35,13 +39,44 @@ namespace SpaceShooter
         {
             backgroundspeed = 4;
             playerSpeed = 4;
-
+            enemyspeed = 4;
             MunitionSpeed = 20;
             munitions = new PictureBox[3];
 
             //load images
           Image munition = Image.FromFile(@"asserts\munition.png");
-           
+
+            Image enemi1 = Image.FromFile(@"asserts\\E1.png");
+            Image enemi2 = Image.FromFile(@"asserts\\E2.png");
+            Image enemi3 = Image.FromFile(@"asserts\\E3.png");
+            Image boss1 = Image.FromFile(@"asserts\\Boss1.png");
+            Image boss2 = Image.FromFile(@"asserts\\Boss2.png");
+
+            enemies = new PictureBox[10];
+
+            //initialiase enemiesPictureBoxes
+            for(int i = 0; i< enemies.Length; i++)
+            {
+                enemies[i] = new PictureBox();
+                enemies[i].Size = new Size(40, 40);
+                enemies[i].SizeMode = PictureBoxSizeMode.Zoom;
+                enemies[i].BorderStyle = BorderStyle.None;
+                enemies[i].Visible = false;
+                this.Controls.Add(enemies[i]);
+                enemies[i].Location = new Point((i + 1) * 50, -50);
+            }
+            enemies[0].Image = boss1;
+            enemies[1].Image = enemi2;
+            enemies[2].Image = enemi3;
+            enemies[3].Image = enemi3;
+            enemies[4].Image = enemi1;
+            enemies[5].Image = enemi3;
+            enemies[6].Image = enemi2;
+            enemies[7].Image = enemi3;
+            enemies[8].Image = enemi2;
+            enemies[9].Image = boss2;
+
+
 
             for (int i = 0; i < munitions.Length; i++)
             {
@@ -189,6 +224,24 @@ namespace SpaceShooter
                 {
                     munitions[i].Visible = false;
                     munitions[i].Location = new Point(Player.Location.X + 20,Player.Location.Y - i * 30);
+                }
+            }
+        }
+
+        private void moveenemiestimer_Tick(object sender, EventArgs e)
+        {
+            MoveEnemies(enemies, enemyspeed);
+        }
+        private void MoveEnemies(PictureBox[] array,int speed)
+        {
+            for(int i = 0; i < array.Length; i++)
+            {
+                array[i].Visible=true;
+                array[i].Top += speed;
+
+                if(array[i].Top > this.Height)
+                {
+                    array[i].Location = new Point((i + 1) * 50, -200);
                 }
             }
         }
