@@ -8,11 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace SpaceShooter
 {
     public partial class Form1 : Form
     {
+        WindowsMediaPlayer gameMedia;
+        WindowsMediaPlayer shootMedia;
+
+
         PictureBox[] stars;
         int backgroundspeed;
         int playerSpeed;
@@ -36,8 +41,7 @@ namespace SpaceShooter
 
             //load images
           Image munition = Image.FromFile(@"asserts\munition.png");
-            //string imagePath = Path.Combine(Application.StartupPath, "asserts", "munition.png");
-            //Image munition = Image.FromFile(imagePath);
+           
 
             for (int i = 0; i < munitions.Length; i++)
             {
@@ -48,6 +52,19 @@ namespace SpaceShooter
                 munitions[i].BorderStyle = BorderStyle.None;
                 this.Controls.Add(munitions[i]);
             }
+
+            //Create mp3
+            gameMedia = new WindowsMediaPlayer();
+            shootMedia = new WindowsMediaPlayer();
+
+            //load all songs
+            gameMedia.URL = "songs\\GameSong.mp3";
+            shootMedia.URL = "songs\\shoot.mp3";
+
+            //setup song settings
+            gameMedia.settings.setMode("loop", true);
+            gameMedia.settings.volume = 5;
+            shootMedia.settings.volume = 1;
 
 
 
@@ -72,6 +89,7 @@ namespace SpaceShooter
                 this.Controls.Add(stars[i]);
             }
 
+            gameMedia.controls.play();
         }
 
         private void MoveBackground_Tick(object sender, EventArgs e)
@@ -159,6 +177,7 @@ namespace SpaceShooter
 
         private void movemunitiontimer_Tick(object sender, EventArgs e)
         {
+            shootMedia.controls.play();
             for(int i = 0;i<munitions.Length;i++)
             {
                 if (munitions[i].Top > 0)
