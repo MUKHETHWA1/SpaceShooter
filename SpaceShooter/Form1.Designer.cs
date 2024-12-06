@@ -104,6 +104,7 @@
             // 
             // exitBtn
             // 
+            this.exitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitBtn.Location = new System.Drawing.Point(167, 240);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(240, 69);
@@ -115,6 +116,7 @@
             // 
             // replayBtn
             // 
+            this.replayBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.replayBtn.Location = new System.Drawing.Point(167, 156);
             this.replayBtn.Name = "replayBtn";
             this.replayBtn.Size = new System.Drawing.Size(240, 69);
@@ -126,46 +128,48 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(269, 112);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(174, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(320, 58);
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             this.label1.Visible = false;
             // 
             // levellb1
             // 
-            this.levellb1.AutoSize = true;
-            this.levellb1.Location = new System.Drawing.Point(473, 45);
+            this.levellb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.levellb1.Location = new System.Drawing.Point(491, 45);
             this.levellb1.Name = "levellb1";
-            this.levellb1.Size = new System.Drawing.Size(0, 13);
+            this.levellb1.Size = new System.Drawing.Size(49, 34);
             this.levellb1.TabIndex = 4;
             // 
             // scorelb1
             // 
-            this.scorelb1.AutoSize = true;
-            this.scorelb1.Location = new System.Drawing.Point(82, 45);
+            this.scorelb1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scorelb1.Location = new System.Drawing.Point(68, 45);
             this.scorelb1.Name = "scorelb1";
-            this.scorelb1.Size = new System.Drawing.Size(0, 13);
+            this.scorelb1.Size = new System.Drawing.Size(49, 34);
             this.scorelb1.TabIndex = 5;
             this.scorelb1.Click += new System.EventHandler(this.scorelb1_Click);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 44);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(50, 35);
             this.label2.TabIndex = 6;
             this.label2.Text = "Score:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(440, 44);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(45, 15);
             this.label3.TabIndex = 7;
             this.label3.Text = "level: ";
             // 
@@ -192,7 +196,6 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
